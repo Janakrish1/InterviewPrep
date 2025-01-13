@@ -1,16 +1,16 @@
-public class Chef {
+class Classes {
     static String name;
 
     static void setName(String _name) {
         name = _name;
     }
 
-    static String getName() {
+    static void getName() {
         System.out.println(name);
     }
 
-    static void main(String args[]) {
-        Chef.setName("Jana")
-        Chef.getName();
+    public static void main(String args[]) {
+        Classes.setName("Jana");
+        Classes.getName();
     }    
 }

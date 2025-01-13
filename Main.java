@@ -1,4 +1,4 @@
-public class Dog {
+class Dog {
     String breed;
     String color;
     int age;
@@ -30,7 +30,6 @@ public class Dog {
 public class Main {
     public static void main(String args[]) {
         Dog dog = new Dog("Tommy");
-
         dog.setBreed("Golden Retriever");
         dog.setColor("Gold");
         dog.setAge(12);

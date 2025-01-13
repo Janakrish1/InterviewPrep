@@ -107,6 +107,58 @@
      ```
    - Note: For subclass access, the child class should extend the parent class.
 
-## Summary
-This document highlights essential concepts of object-oriented programming
+# Inheritance
+
+Inheritance is the process in which a class acquires the properties like methods and attributes of another class.
+
+## Key Terms:
+- **Subclass:** The class that inherits properties.
+- **Superclass:** The class whose properties are inherited.
+
+## Need for Inheritance:
+1. **Code Reusability:** Reuse the features of one base class to reduce redundancy.
+2. **Extensibility:** Extend the features of one class and implement additional functionality in the derived class.
+3. **Method Overriding:** Achieve one of the concepts of polymorphism through method overriding.
+4. **Abstraction:** Abstraction is achieved through inheritance.
+
+### Syntax:
+```java
+class Super {
+    // Superclass members
+}
+
+class Sub extends Super {
+    // Subclass members
+}
+```
+
+## `super` Keyword:
+- **Purpose:** Used in the subclass to differentiate the members or methods shared with the superclass.
+- **Constructor Chaining:** To call the parameterized constructor of the superclass, use `super(parameters)`.
+
+---
+
+## Types of Java Inheritance:
+1. **Single Inheritance**
+2. **Multilevel Inheritance**
+3. **Hierarchical Inheritance**
+
+> Note: Java does not support **Multiple Inheritance** and **Hybrid Inheritance** directly to avoid ambiguity issues.
+
+---
+
+# Polymorphism
+
+Polymorphism is the ability of an object to take on many forms.
+
+## Types of Polymorphism:
+1. **Compile-Time Polymorphism (Static Polymorphism):**
+   - **Method Overloading:** Same method names but different parameters.
+
+2. **Runtime Polymorphism (Dynamic Polymorphism):**
+   - **Method Overriding:** 
+     - Overriding means redefining the functionality of an existing method.
+     - A child class can override a method from its parent class based on its requirements.
+     - Also known as **dynamic method dispatch** because the object behaves differently in many forms at runtime.
+
 ```
