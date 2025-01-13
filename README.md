@@ -153,12 +153,57 @@ Polymorphism is the ability of an object to take on many forms.
 
 ## Types of Polymorphism:
 1. **Compile-Time Polymorphism (Static Polymorphism):**
-   - **Method Overloading:** Same method names but different parameters.
+   - **Method Overloading:** Same method names but different number of parameters or different types.
 
 2. **Runtime Polymorphism (Dynamic Polymorphism):**
    - **Method Overriding:** 
      - Overriding means redefining the functionality of an existing method.
      - A child class can override a method from its parent class based on its requirements.
      - Also known as **dynamic method dispatch** because the object behaves differently in many forms at runtime.
+     - Method declared final cannot be overridden.
+     - Method declared static cannot be overridden but can be re-declared.
+
+# Dynamic Binding (Late Binding)
+
+- **Definition:** Linking between the method call and method implementation is resolved at runtime.  
+- **Example:** **Method Overriding**  
+  ```java
+  Animal b = new Dog(); 
+  ```
+  - Even though `b` is a reference type of `Animal`, the check is made on the reference type during compile time.
+  - However, the **JVM** determines the object type at runtime and executes the method belonging to that object.
+
+---
+
+# Static Binding (Early Binding)
+
+- **Definition:** Linking between the method call and the actual implementation is resolved at compile time.  
+- **Example:** **Method Overloading**
+
+---
+
+# Instance Initializer Block
+
+- **Definition:** A block of code defined inside a class to initialize instance data members. It works like a constructor but is executed **before** the constructor.
+
+## Execution Order:
+1. **Superclass Constructor** (if inherited)
+2. **Instance Initializer Block** of the subclass
+3. **Subclass Constructor**
+
+## Use Cases:
+1. Initialize instance variables.
+2. Initialize resources used in the code.
+3. Perform dynamic initialization of instance variables.
+4. Use common initialization logic for multiple constructors.
+
+## Syntax:
+```java
+{
+    System.out.println("Inside instance initializer block");
+    a = 10;
+}
+```
+
 
 ```
