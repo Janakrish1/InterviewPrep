@@ -205,5 +205,25 @@ Polymorphism is the ability of an object to take on many forms.
 }
 ```
 
+# Abstraction
+- **Abstraction** in OOPs in Java is the quality of an object to deal with ideas rather than events.
+- It is basically about **hiding the implementation** and showing only the functionality of the object.
+- Abstraction is achieved using **abstract classes** and **interfaces**.
+- It focuses on **what** the object does instead of **how** it is done.
+- Provides a **blueprint** for subclasses to implement specific behaviors.
 
-```
+### Levels of Abstraction
+- **Abstract Class**: Partial abstraction.
+- **Interface**: Full abstraction.
+
+---
+
+# Encapsulation
+- **Encapsulation** is also a fundamental concept of OOPs.
+- It is the mechanism of **wrapping data (variables)** and **code acting on the data (methods)** together as a single unit.
+- Encapsulation involves **hiding the variables** of a class from other classes, making them accessible only through the methods of the same class.  
+  Therefore, it is also called **data hiding**.
+- **Encapsulation** is implemented via **getters** and **setters**:
+  - Only getters → **Read-only class**.
+  - Only setters → **Write-only class**.
+- Variables are always declared as **private**.
