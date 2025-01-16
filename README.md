@@ -227,3 +227,80 @@ Polymorphism is the ability of an object to take on many forms.
   - Only getters → **Read-only class**.
   - Only setters → **Write-only class**.
 - Variables are always declared as **private**.
+
+# Interfaces
+- An **interface** is a collection of abstract methods. It is used to achieve **abstraction** and **multiple inheritance** in Java.
+- Methods in an interface are declared without implementation, and a class that implements the interface provides their definitions.
+- Interfaces can extend other interfaces using the `extends` keyword, and a class implements an interface using the `implements` keyword.
+- An interface can extend **multiple interfaces**:
+  ```java
+  public interface Hockey extends Sports, Event {
+      // Additional methods
+  }
+  ```
+- An interface is essentially the **blueprint for a class**.
+
+---
+
+# Packages
+A **Java package** is a grouping of related types (classes, interfaces, enumerations, and annotations) to provide:
+- **Access protection**.
+- **Namespace management**.
+
+Packages in Java help:
+- Prevent naming conflicts.
+- Control access to classes.
+- Simplify searching and usage of classes and interfaces.
+
+### **Types of Java Packages**
+1. **Built-in Java Packages**: Predefined in Java, like `java.util` and `java.io`.
+2. **User-defined Java Packages**: Created by users to organize their classes.
+
+---
+
+# Nested Classes
+### **Static Nested Classes**
+- A static nested class does not require an instance of the outer class.
+- It can be accessed using the outer class's name:
+  ```java
+  class MyOuter {
+      static class Nested_Demo {
+          // Static nested class
+      }
+  }
+  ```
+
+### **Inner Classes**
+- Non-static nested classes have access to the outer class's instance variables and methods:
+  ```java
+  class MyOuter {
+      private class Nested_Demo {
+          // Inner class
+      }
+  }
+  ```
+
+---
+
+## **Anonymous Classes**
+- An **anonymous class** is a nameless inner class that is typically used to override a method or provide a specific implementation.
+- Example:
+  ```java
+  public class Tester {
+      public static void main(String[] args) {
+          Software s = new Software() {
+              @Override
+              public void develop() {
+                  System.out.println("Software Developed in Java");
+              }
+          };
+          s.develop();
+          System.out.println(s.getClass().getName());
+      }
+  }
+  ```
+  Output:
+  ```
+  Software Developed in Java
+  Tester$1
+  ```
