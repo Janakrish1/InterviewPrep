@@ -304,3 +304,106 @@ Packages in Java help:
   Software Developed in Java
   Tester$1
   ```
+
+  Here’s the formatted content in Markdown:
+
+---
+
+# Singleton Design Pattern
+
+**Definition**:  
+The Singleton design pattern ensures that a class has only one instance and provides a global point of access to that instance. It is particularly useful for:  
+- Configuration settings  
+- Logging  
+- Managing shared resources  
+- Database connection pools  
+
+### How It Works:  
+1. **Private Constructor**: Prevents instantiation from other classes.  
+2. **Static Method**: Provides a single instance of the class.  
+
+### Thread-Safety:  
+In multi-threaded environments, the Singleton should be thread-safe to avoid multiple instances being created simultaneously.
+
+---
+
+# Java Wrapper Classes
+
+When working with numbers, primitive data types like `int`, `float`, `double`, `byte`, `long`, etc., are commonly used. However, in some scenarios, we need objects instead of primitives. Java provides **Wrapper Classes** for this purpose.  
+
+### Wrapper Classes:  
+- `Integer`  
+- `Long`  
+- `Byte`  
+- `Double`  
+- `Float`  
+- `Short`  
+
+All wrapper classes are subclasses of the abstract class **`Number`**. These classes wrap a primitive data type within an object.
+
+---
+
+# Java Enum
+
+An **enum** in Java is a special class that represents a group of pre-defined constant values.  
+- Enums are used in switch expressions for comparison and as constants in application code.  
+- **Key Property**: Java enums can only have private constructors.
+
+### Example:
+```java
+enum Mobile {
+    Samsung,
+    Nokia,
+    Motorola
+}
+```
+
+---
+
+# Exception Handling in Java
+
+**Definition**:  
+An exception is a problem that arises during program execution. When an exception occurs, the normal program flow is disrupted, leading to abnormal termination. Exceptions must be handled to maintain program stability.
+
+### Try-Catch Block:  
+The `try` block contains the code that might generate an exception. The `catch` block is used to handle the exception.
+
+**Syntax**:
+```java
+try {
+    // Protected code
+} catch (ExceptionName e1) {
+    // Catch block
+}
+```
+
+### The `finally` Block:
+The `finally` block executes regardless of whether an exception occurs. It is used for cleanup operations.
+
+**Example**:
+```java
+try {
+    // Protected code
+} catch (Exception e) {
+    // Handle exception
+} finally {
+    // Cleanup code
+}
+```
+
+---
+
+# Custom Exceptions
+
+You can define your own exception class by extending the predefined `Exception` class.
+
+**Example**:
+```java
+class MyException extends Exception {
+    // Custom exception logic
+}
+```
+
+**Note**: Custom exceptions are considered **checked exceptions**.
+
+---
