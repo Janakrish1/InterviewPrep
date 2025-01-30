@@ -304,9 +304,7 @@ Packages in Java help:
   Software Developed in Java
   Tester$1
   ```
-
-  Here’s the formatted content in Markdown:
-
+  
 ---
 
 # Singleton Design Pattern
@@ -406,4 +404,100 @@ class MyException extends Exception {
 
 **Note**: Custom exceptions are considered **checked exceptions**.
 
----
+
+# Multithreading in Java
+
+## Introduction
+Java is a multi-threaded programming language, meaning it allows the development of multi-threaded programs. A multi-threaded program contains two or more parts that can run concurrently, enabling optimal resource utilization, especially on multi-core processors.
+
+## Multitasking vs. Multithreading
+- **Multitasking**: Multiple processes share common processing resources (CPU).
+- **Multithreading**: A specific form of multitasking where operations within a single application are subdivided into individual threads, each running in parallel.
+- The OS divides processing time among different applications and also among different threads within an application.
+
+## Advantages of Multithreading
+- Enables concurrent execution of multiple tasks.
+- Optimizes CPU usage by running tasks in parallel.
+- Enhances application responsiveness.
+
+## Life Cycle of a Thread in Java
+1. **New**: A newly created thread remains in this state until started.
+2. **Runnable**: Once started, the thread enters the runnable state and executes its task.
+3. **Waiting**: The thread waits for another thread to complete before resuming execution.
+4. **Timed Waiting**: A thread remains in a waiting state for a specified interval before resuming execution.
+5. **Terminated (Dead)**: A thread enters this state when it completes execution or is terminated.
+
+## Thread Priorities
+Every Java thread has a priority to help the OS determine the order of execution:
+- `MIN_PRIORITY (1)`
+- `NORM_PRIORITY (5)`
+- `MAX_PRIORITY (10)`
+
+## Implementing Multithreading using Runnable Interface
+### Steps to Create a Thread
+1. **Implement `run()` Method**
+```java
+public void run() {
+    // Business logic
+}
+```
+2. **Instantiate a Thread Object**
+```java
+Thread(Runnable threadObj, String threadName);
+```
+3. **Start the Thread using `start()` Method**
+```java
+threadObj.start();
+```
+
+## Joining Threads
+Joining a thread means making a thread wait until another thread finishes execution:
+```java
+threadObj.join();
+```
+
+## Thread Pool
+A thread pool is a collection of pre-defined threads that help optimize performance.
+### Benefits:
+- Saves time by reusing existing threads instead of creating new ones.
+- Efficiently handles multiple tasks using thread reuse.
+- Used in Servlets and JSP for request processing.
+
+### Creating Thread Pools
+```java
+ExecutorService fixedPool = Executors.newFixedThreadPool(2);
+```
+If more than two threads are submitted, they are held in a queue until a thread becomes available.
+
+## Main Thread
+- The **main thread** is the first and last thread, handling shutdown tasks.
+- It can be controlled using different thread methods.
+
+## Daemon Thread
+- A **Daemon thread** is a low-priority background thread that supports user threads.
+- Example: Garbage Collector.
+
+## Race Condition
+A race condition occurs when multiple threads access and modify shared data concurrently, leading to unexpected behavior.
+
+### Fixing Race Conditions using Mutex
+A **mutex (mutual exclusion)** ensures only one thread accesses the critical section at a time.
+
+### Synchronization to Prevent Race Conditions
+Using `synchronized` ensures thread safety:
+#### Method-Level Synchronization
+```java
+public synchronized void withdraw() {
+    // Critical section
+}
+```
+#### Block-Level Synchronization
+```java
+synchronized (this) {
+    // Critical section
+}
+```
+### Key Takeaways
+- **Race conditions** occur when multiple threads modify shared data without synchronization.
+- The **synchronized** keyword ensures only one thread at a time executes a method/block.
+- Proper synchronization prevents unpredictable program states and ensures data consistency.
