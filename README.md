@@ -501,3 +501,30 @@ synchronized (this) {
 - **Race conditions** occur when multiple threads modify shared data without synchronization.
 - The **synchronized** keyword ensures only one thread at a time executes a method/block.
 - Proper synchronization prevents unpredictable program states and ensures data consistency.
+
+JDK is an abbreviation for Java Development Kit which includes all the tools, executables, and binaries required to compile, debug, and execute a Java Program.
+JRE is a Java Runtime Environment which is the implementation of JVM i.e. the specifications that are defined in JVM are implemented and create a corresponding environment for the execution of code.  
+JVM is the abbreviation for Java Virtual Machine which is a specification that provides a runtime environment in which Java byte code can be executed i.e. it is something that is abstract and its implementation is independent of choosing the algorithm and has been provided by Sun and other companies.
+It is JVM which is responsible for converting Byte code to machine-specific code. JVM (Java Virtual Machine) is a virtual machine, an abstract computer that has its own ISA, memory, stack, heap, etc. It runs on the host OS and places its demands for resources on it. The JVM manages the entire lifecycle of objects in Java. Once an object is created, the developer need not worry about it anymore. In case the object becomes dead (that is, there is no reference to it anymore), it is ejected from the heap by the GC using one of the many algorithms – serial GC, CMS, G1, etc. The JIT stands for Just-In-Time. The JIT compiler is a main part of the Java runtime environment and it compiles bytecodes to machine code at runtime.
+
+thread synchronization:
+when there are multiple threads running, they can share same resources resulting in unforseen data due to concurrency issues. So there is a need to synchronize these threads wihle running i.e while one thread is accessing the resoruce it should be locked and other threads will not be allowed to access. this is implementeed using concept of monitors.each object will have a monitor in which a thread can lock or unlock. only one thread can hold a lock on a monitor at a time.
+
+Java programming language provides a very handy way of creating threads and synchronizing their task by using synchronized blocks.
+
+synchronized(objectidentifier) {
+   // Access shared variables and other shared resources
+}
+
+block level synchronization and method level synchronization see code example
+
+The main benefit of multithreading is the optimal use of resources like CPU and it boosts the execution time of allocated operations. 
+
+static synchronization for static methods of the class
+
+these three methods can only be inside synchronized context, all are implemented as final methods in object
+wait(), notify(), notifyAll() for inter-thread communication
+example - chat application
+
+Thread deadlock:
+Deadlock describes a situation where two or more threads are blocked forever, waiting for each other. deadlock occurs when multiple threads need same locks but obtain them in different order. A Java multithreaded program may suffer from the deadlock condition because the synchronized keyword causes the executing thread to block while waiting for the lock, or monitor, associated with the specified object. Here is an example.
