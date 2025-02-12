@@ -133,4 +133,109 @@ Sharding splits large databases into smaller, manageable parts called **shards**
 - **Celebrity Problem**
 - **Joins & Denormalization**
 
-To support increasing traffic, some non-relational functionalities are offloaded to a NoSQL data store to reduce database load.
+## To support increasing traffic
+Some non-relational functionalities are offloaded to a NoSQL data store to reduce database load.
+
+## Millions of users and beyond
+We provide a summary of how we scale our system to support millions of users:
+- Keep web tier stateless
+- Build redundancy at every tier
+- Cache data as much as you can
+- Support multiple data centers
+- Host static assets in CDN
+- Scale your data tier by sharding
+- Split tiers into individual services
+- Monitor your system and use automation tools
+
+## BACK-OF-THE-ENVELOPE ESTIMATION
+A byte is a sequence of 8 bits. An ASCII character uses one byte of memory (8 bits).
+
+### Table explaining the data volume unit power of 2:
+| Power | Value | Description |
+|--------|--------|------------------|
+| 2^10 | 1 thousand | 1 KB, A thousand is a number with 3 zeros |
+| 2^20 | 1 million | 1 MB, A million is a number with 6 zeros |
+| 2^30 | 1 billion | 1 GB, A billion is a number with 9 zeros |
+| 2^40 | 1 trillion | 1 TB, A trillion is a number with 12 zeros. |
+| 2^50 | 1 quadrillion | 1 PB, A quadrillion is a number with 15 zeros. |
+
+## Latency numbers:
+- L1 cache - 0.5 ns
+- L2 cache reference - 7 ns
+- Main memory reference - 100 ns
+- Compress 1 KB with zippy - 10 microsec
+- Read 1 MB sequentially from main memory - 250 microsec
+- Disk seek - 10 ms
+- Read 1 MB sequentially from the network - 10 ms
+- Read 1 MB sequentially from disk - 30 ms
+- Send packet from Netherlands to CA - RTT - 150 ms
+
+### Time Conversions:
+- ns = nanosecond, μs = microsecond, ms = millisecond
+- 1 ns = 10^-9 seconds
+- 1 μs = 10^-6 seconds = 1,000 ns
+- 1 ms = 10^-3 seconds = 1,000 μs = 1,000,000 ns
+
+### Observations:
+- Memory is fast but the disk is slow.
+- Avoid disk seeks if possible.
+- Simple compression algorithms are fast.
+- Compress data before sending it over the internet if possible.
+- Data centers are usually in different regions, and it takes time to send data between them.
+
+## Availability numbers
+High availability is the ability of a system to be continuously operational for a desirably long period of time. High availability is measured as a percentage, with 100% meaning a service that has 0 downtime. Most services fall between 99% and 100%.
+
+| Availability % | Downtime per day | Downtime per year |
+|---------------|----------------|----------------|
+| 99% | 14.40 minutes | 3.65 days |
+| 99.9% | 1.44 minutes | 8.77 hours |
+| 99.99% | 8.64 seconds | 52.60 minutes |
+| 99.999% | 864 milliseconds | 5.260 minutes |
+| 99.9999% | 86.4 milliseconds | 31.56 seconds |
+
+## Example - Twitter QPS and storage requirements
+### Assumptions:
+- 300 million monthly active users
+- 50% of users use Twitter daily
+- Users post 2 tweets per day on average
+- 10% of tweets contain media
+- Data is stored for 5 years.
+
+### Estimations:
+#### Daily Active Users (DAU):
+```
+DAU = 300 million * 50% = 150 million
+```
+
+#### Tweets QPS:
+```
+Tweets QPS = (150 million * 2 tweets) / (24 * 3600 seconds)
+           = 300 million / 86400
+           = 3500 tweets QPS (approx.)
+```
+#### Peak QPS:
+```
+Peak QPS = 2 * 3500 = 7000
+```
+
+### Media Storage:
+#### Tweet Size Breakdown:
+- Tweet ID: 64 bytes
+- Text content: 140 bytes (140-character limit for tweets)
+- Media (if present): 1 MB (Assumed average media size)
+
+#### Media Storage Calculation:
+```
+Media tweets per day = 10% * 300 million = 30 million
+Each media file is 1 MB
+Media storage per day = 1 MB * 30 million = 30 TB per day
+Media storage for 5 years = 365 * 30 TB * 5 = 54750 TB = 55 PB (approx.)
+```
+
+## Commonly asked back-of-the-envelope estimations:
+- QPS
+- Peak QPS
+- Storage
+- Cache
+- Number of servers, etc.
